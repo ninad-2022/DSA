@@ -1,2 +1,4 @@
 # DSA
-DSA Practice
+- Practice from beginner to advance
+- with JavaScript 😎
+
