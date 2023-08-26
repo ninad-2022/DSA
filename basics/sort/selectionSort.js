@@ -11,9 +11,7 @@ const selectinSort = (arr) => {
     }
 
     if (minIndex !== i) {
-        const temp = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = temp;
+      [arr[i], arr[minIndex]] = [arr[minIndex], arr[i]];
     }
   }
   return arr;
