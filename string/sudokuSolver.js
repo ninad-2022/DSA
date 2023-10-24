@@ -18,20 +18,11 @@ const isValid = (x, y, ch, board) => {
 };
 
 const solve = (x, y, board) => {
-  if (x === 9) {
-    return true;
-  }
-  if (y === 9) {
-    return solve(x + 1, 0, board);
-  }
-  if (board[x][y] !== ".") {
-    return solve(x, y + 1, board);
-  }
-  for (
-    let ch = "1";
-    ch <= "9";
-    ch = String.fromCharCode(ch.charCodeAt(0) + 1)
-  ) {
+  if (x === 9) return true;
+  if (y === 9) return solve(x + 1, 0, board);
+  if (board[x][y] !== ".") return solve(x, y + 1, board);
+
+  for (let ch = "1"; ch <= "9"; ch = String.fromCharCode(ch.charCodeAt(0) + 1)) {
     if (isValid(x, y, ch, board)) {
       board[x][y] = ch;
       if (solve(x, y + 1, board)) return true;
