@@ -19,5 +19,5 @@ class Solution {
 const vote = [3, 4, 3, 1];
 let exampleOne = Solution.findCurrency([3, 4, 3, 1]);
 let exampleTwo = Solution.findCurrency([4, 3, 2, 1, 2, 1]);
-console.log("exampleOne: ", exampleOne);
 console.log('exampleTwo: ', exampleTwo);
+console.log("exampleOne: ", exampleOne);
