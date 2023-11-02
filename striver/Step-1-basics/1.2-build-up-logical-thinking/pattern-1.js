@@ -59,7 +59,7 @@ const pattern4 = (n) => {
 // * * *
 // * *
 // *
-const pattern6 = (n) => {
+const pattern5 = (n) => {
   for (let i = n; i > 0; i--) {
     let star = "";
     for (let j = i; j > 0; j--) {
@@ -68,12 +68,12 @@ const pattern6 = (n) => {
     console.log(star);
   }
 };
-// pattern6(5); //Time: O(n2) & Space:O(n)
+// pattern5(5); //Time: O(n2) & Space:O(n)
 
 // 1 2 3
 // 1 2
 // 1
-const pattern7 = (n) => {
+const pattern6 = (n) => {
   for (let i = n; i >= 1; i--) {
     let numRow = "";
     for (let j = 1; j <= i; j++) {
@@ -82,7 +82,7 @@ const pattern7 = (n) => {
     console.log(numRow);
   }
 };
-// pattern7(5); //Time: O(n2) & Space:O(n)
+// pattern6(5); //Time: O(n2) & Space:O(n)
 
 /*
    *
@@ -94,21 +94,22 @@ n-i-1      , 2 * i - 1
 3-1-1 = 1  , 2 * 1 - 1 = 3
 3-2-1 = 0  , 2 * 2 - 1 = 5
 */
-const pattern8 = (n) => {
+const pattern7 = (n) => {
   for (let i = 0; i < n; i++) {
+    let row = "";
     for (let j = 0; j < n - i - 1; j++) {
-      process.stdout.write(" ");
+      row += " ";
     }
     for (let j = 0; j < 2 * i + 1; j++) {
-      process.stdout.write("*");
+      row += "*";
     }
     for (let j = 0; j < n - i - 1; j++) {
-      process.stdout.write(" ");
+      row += " ";
     }
-    console.log();
+    console.log(row);
   }
 };
-// pattern8(3); //Time: O(n3) & Space:O(n)
+// pattern7(3); //Time: O(n2) & Space:O(n)
 
 /*
 *****  
@@ -120,25 +121,95 @@ n-i-1      , 2 * i - 1
 3-1-1 = 1  , 2 * 1 - 1 = 3
 3-2-1 = 0  , 2 * 2 - 1 = 5
 */
-const pattern9 = (n) => {
+const pattern8 = (n) => {
   for (let i = 0; i < n; i++) {
+    let row = "";
     for (let j = 0; j < i; j++) {
-      process.stdout.write(" ");
+      row += " ";
     }
     const compare = 2 * n - (2 * i + 1);
     for (let j = 0; j < compare; j++) {
-      process.stdout.write("*");
+      row += "*";
     }
     for (let j = 0; j < i; j++) {
-      process.stdout.write(" ");
+      row += " ";
     }
-    console.log();
+    console.log(row);
   }
 };
-// pattern9(3); //Time: O(n3) & Space:O(n)
+// pattern8(3); //Time: O(n2) & Space:O(n)
 
-const pattern10=()=>{
-  pattern8(5);
-  pattern9(5);
+const pattern9 = (n) => {
+  const input = Math.floor(n / 2);
+  pattern7(input);
+  pattern8(input);
+};
+// pattern9(8); //Time: O(n2) & Space:O(n)
+
+const pattern10 = (n) => {
+  for (let i = 1; i <= 2 * n - 1; i++) {
+    let starCount = i;
+    if (i > n) starCount = 2 * n - i;
+    let row = "";
+    for (let j = 1; j <= starCount; j++) {
+      row += "*";
+    }
+    console.log(row);
+  }
+};
+// pattern10(8); //Time: O(n2) & Space:O(n)
+
+// 0
+// 10
+// 010
+// 1010
+// Approach-1
+const pattern11_1 = (n) => {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      if (j % 2 == 0) row += "1";
+      else row += "0";
+    }
+    console.log(row);
+  }
+};
+// pattern11_1(4); //Time: O(n2) & Space:O(n)
+//Approach-2
+const pattern11_2 = (n) => {
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    if (i % 2 == 0) start = 1;
+    else start = 0;
+
+    for (let j = 1; j <= i; j++) {
+      row += start;
+      start = 1 - start;
+    }
+    console.log(row);
+  }
+};
+// pattern11_2(4); //Time: O(n2) & Space:O(n)
+
+// 1    1
+// 12  21
+// 123321
+function pattern12(n) {
+  let maxSpace = 2 * (n - 1);
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+    for (let j = 1; j <= i; j++) {
+      str += j;
+    }
+    for (let j = 0; j < maxSpace; j++) {
+      str += "*";
+    }
+    for (let j = i; j > 0; j--) {
+      str += j;
+    }
+    console.log(str);
+    maxSpace -= 2;
+  }
 }
-pattern10()
+
+pattern12(4); //Time: O(n2) & Space:O(n)
