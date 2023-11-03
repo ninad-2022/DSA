@@ -194,7 +194,7 @@ const pattern11_2 = (n) => {
 // 1    1
 // 12  21
 // 123321
-function pattern12(n) {
+const pattern12 = (n) => {
   let maxSpace = 2 * (n - 1);
   for (let i = 1; i <= n; i++) {
     let str = "";
@@ -210,6 +210,101 @@ function pattern12(n) {
     console.log(str);
     maxSpace -= 2;
   }
-}
+};
 
-pattern12(4); //Time: O(n2) & Space:O(n)
+// pattern12(4); //Time: O(n3) & Space:O(n)
+
+// 1
+// 2 3
+// 4 5 6
+// 7 8 9 10
+const pattern13 = (n) => {
+  let num = 1;
+  for (let i = 1; i <= n; i++) {
+    let row = "";
+    for (let j = 1; j <= i; j++) {
+      row += `${num}; `;
+      num++;
+    }
+    console.log(row);
+  }
+};
+// pattern13(4); //Time: O(n2) & Space:O(n)
+
+// A
+// A B
+// A B C
+const pattern14 = (n) => {
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+    for (let j = 1; j < i; j++) {
+      str += String.fromCharCode(64 + j);
+    }
+    console.log(str);
+  }
+};
+// pattern14(4); //Time: O(n2) & Space:O(n)
+
+// A B C
+// A B
+// A
+//APPROACH-1: brut force approach
+const pattern15_1 = (n) => {
+  let num = 1;
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+    for (let j = n; j >= i; j--) {
+      str += String.fromCharCode(64 + num);
+      num++;
+    }
+    num = 1;
+    console.log(str);
+  }
+};
+// pattern15_1(4); //Time: O(n2) & Space:O(n)
+
+//APPROACH-2: brut force approach
+const pattern15_2 = (n) => {
+  for (let i = n; i >= 1; i--) {
+    let str = "";
+    for (let j = 1; j < i; j++) {
+      str += String.fromCharCode(64 + j);
+    }
+    console.log(str);
+  }
+};
+// pattern15_2(6); //Time: O(n2) & Space:O(n)
+
+// A
+// B B
+// C C C
+const pattern16 = (n) => {
+  for (let i = 1; i <= n; i++) {
+    let str = "";
+    for (let j = 1; j <= i; j++) {
+      str += String.fromCharCode(64 + i);
+    }
+    console.log(str);
+  }
+};
+// pattern16(3); //Time: O(n2) & Space:O(n)
+
+// A
+// ABA
+// ABCBA
+const pattern17 = (n) => {
+  for (let i = 0; i < n; i++) {
+    let row = " ";
+    for (let j = 0; j < n - i - 1; j++) {
+      row += " ";
+    }
+    for (let j = 0; j < 2 * i + 1; j++) {
+      row += String.fromCharCode(65 + j);
+    }
+    for (let j = 0; j < n - i - 1; j++) {
+      row += " ";
+    }
+    console.log(row);
+  }
+};
+pattern17(3); //Time: O(n2) & Space:O(n)
